@@ -18,6 +18,7 @@ public class KioskController {
     }
 
     public void run(){
-
+        outputView.printStartMessage();
+        String str = inputView.inputMenuName();
     }
 }

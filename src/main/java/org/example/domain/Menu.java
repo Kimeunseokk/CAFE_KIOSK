@@ -15,4 +15,5 @@ public enum Menu {
 
     public String getName() { return name; }
     public int getPrice() { return price; }
+    
 }
