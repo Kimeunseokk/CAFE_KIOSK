@@ -1,6 +1,5 @@
 package org.example.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class OrderList {
