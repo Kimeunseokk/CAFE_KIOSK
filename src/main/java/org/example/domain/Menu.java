@@ -15,5 +15,15 @@ public enum Menu {
 
     public String getName() { return name; }
     public int getPrice() { return price; }
+
+    public static void checkContainsMenu(String name){
+        if(name == null || name.trim().isEmpty()) throw new IllegalArgumentException("[Error] 메뉴를 입력해주세요. ");
+        for(Menu menu : values()){
+            if(menu.getName().equals(name)) return;
+        }
+        throw new IllegalArgumentException("[Error] 메뉴판에 없는 메뉴입니다. ");
+    }
+
+
     
 }

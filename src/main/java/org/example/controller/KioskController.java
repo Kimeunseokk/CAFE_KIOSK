@@ -19,6 +19,9 @@ public class KioskController {
 
     public void run(){
         outputView.printStartMessage();
+        String orderkind = inputView.inputOrderKind(); 
+        outputView.printMenuList();
         String str = inputView.inputMenuName();
+        
     }
 }
