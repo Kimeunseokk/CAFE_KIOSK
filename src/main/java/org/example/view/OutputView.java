@@ -28,5 +28,9 @@ public class OutputView {
         System.out.println("존재하지 않는 메뉴입니다.");
     }
 
+    public void printErrorMessage(String message){
+        System.out.println(message);
+    }
+
 
 }

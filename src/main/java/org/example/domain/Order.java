@@ -4,7 +4,7 @@ public class Order {
     private final Menu menu;
     private final int quantity; // 주문수량
 
-    Order(Menu menu, int quantity){
+    public Order(Menu menu, int quantity){
         this.menu = menu;
         this.quantity = quantity;
     }

@@ -12,10 +12,10 @@ public class KioskService {
 
     public void orderMenu(String name, int quantity){
         Menu.checkContainsMenu(name);
-
+    
         Order.checkQuantity(quantity);
 
-        
-        
+        Menu menu = Menu.findByName(name);
+        orderlist.add(new Order(menu,quantity));
     }
 }

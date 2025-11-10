@@ -22,7 +22,21 @@ public class KioskController {
         outputView.printStartMessage();
         String orderkind = inputView.inputOrderKind(); 
         outputView.printMenuList();
-        String str = inputView.inputMenuName();
+
+        while(true){
+            try {
+                String str = inputView.inputMenuName();
+                String quantity = inputView.inputMenuQuantity();
+
+                int num = Integer.parseInt(quantity);
+                kioskService.orderMenu(str,num);
+                break;
+
+            } catch (IllegalArgumentException e) {
+                outputView.printErrorMessage(e.getMessage());
+            }
+        }
+
         
     }
 }
