@@ -1,7 +1,21 @@
 package org.example.service;
 
+import java.util.ArrayList;
+
 import org.example.domain.Menu;
+import org.example.domain.Order;
+import org.example.domain.OrderList;
 
 public class KioskService {
-   
+
+    private final OrderList orderlist =  new OrderList();
+
+    public void orderMenu(String name, int quantity){
+        Menu.checkContainsMenu(name);
+
+        Order.checkQuantity(quantity);
+
+        
+        
+    }
 }

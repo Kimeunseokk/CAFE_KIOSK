@@ -7,8 +7,13 @@ public class InputView {
     private final static Scanner scanner = new Scanner(System.in);
 
     public String inputMenuName(){
-        System.out.print("주문할 메뉴와 수량을 입력해주세요 > ");
-        return scanner.nextLine();
+        System.out.print("주문할 메뉴를 입력해주세요 > ");
+        return scanner.nextLine().trim();
+    }
+
+    public String inputMenuQuantity(){
+        System.out.print("수량을 입력해주세요 > ");
+        return scanner.nextLine().trim();
     }
 
     public String inputOrderKind(){

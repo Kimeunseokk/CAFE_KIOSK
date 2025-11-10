@@ -24,6 +24,4 @@ public enum Menu {
         throw new IllegalArgumentException("[Error] 메뉴판에 없는 메뉴입니다. ");
     }
 
-
-    
 }
