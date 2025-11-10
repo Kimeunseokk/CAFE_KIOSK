@@ -15,7 +15,7 @@ public class Order {
     public int getTotalPrice() { return menu.getPrice() * quantity; }
 
     public static void checkQuantity(int quantity){
-        if(quantity < 1) throw new IllegalArgumentException("수량이 잘못됐습니다. ");
+        if(quantity < 1) throw new IllegalArgumentException("[Error] 수량이 잘못됐습니다. ");
     }
    
 }

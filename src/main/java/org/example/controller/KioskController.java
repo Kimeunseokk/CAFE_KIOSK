@@ -18,11 +18,7 @@ public class KioskController {
         this.outputView = new OutputView();
     }
 
-    public void run(){
-        outputView.printStartMessage();
-        String orderkind = inputView.inputOrderKind(); 
-        outputView.printMenuList();
-
+    public void option1(){
         while(true){
             try {
                 String str = inputView.inputMenuName();
@@ -36,7 +32,25 @@ public class KioskController {
                 outputView.printErrorMessage(e.getMessage());
             }
         }
-
-        
     }
+
+    public void run(){
+        outputView.printStartMessage();
+        String orderkind = inputView.inputOrderKind(); 
+        outputView.printMenuList();
+
+        while(true){
+            String option = inputView.inputMenu(); 
+            switch(option){
+                case "1":
+                    option1();
+                    break;
+                case "2":
+                    //kioskService.option2();
+                    break;
+                
+            }
+        }
+    }
+
 }
