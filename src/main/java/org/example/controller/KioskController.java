@@ -13,9 +13,9 @@ public class KioskController {
     private final OutputView outputView;
 
     public KioskController(){
-        this.kioskService = new KioskService();
         this.inputView = new InputView();
         this.outputView = new OutputView();
+        this.kioskService = new KioskService(outputView);
     }
 
     public void option1(){

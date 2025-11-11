@@ -11,6 +11,11 @@ import org.example.view.OutputView;
 public class KioskService {
 
     private final OrderList orderlist =  new OrderList();
+    private final OutputView outputView;
+
+     public KioskService(OutputView outputView) {
+        this.outputView = outputView;
+    }
 
     public void orderMenu(String name, int quantity){
         Menu.checkContainsMenu(name);
@@ -22,9 +27,12 @@ public class KioskService {
     }
 
     public void getOrderList(){
+        int total = 0;
         for(Order order : orderlist.getOrderList()){
-            System.out.print("주문내역 :" + order.getMenu() + "\n총 금액 : " + order.getTotalPrice() + "\n");
+            outputView.printOrderList(order);
+            total += order.getTotalPrice();
         }
+        outputView.printToTalPrice(total);
     }
 
 }

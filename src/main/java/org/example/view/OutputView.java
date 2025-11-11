@@ -1,6 +1,7 @@
 package org.example.view;
 
 import org.example.domain.Menu;
+import org.example.domain.Order;
 import org.example.domain.OrderList;
 
 public class OutputView {
@@ -33,5 +34,13 @@ public class OutputView {
         System.out.println(message);
     }
 
+    public void printOrderList(Order order){
+         System.out.print("주문내역 :" + order.getMenu()+ ", 금액 : " + order.getTotalPrice());
+         System.out.println();
+    }
+
+    public void printToTalPrice(int total){
+        System.out.println("총 금액 : " +total);
+    }
 
 }
