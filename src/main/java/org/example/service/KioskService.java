@@ -21,4 +21,10 @@ public class KioskService {
         orderlist.add(new Order(menu,quantity));
     }
 
+    public void getOrderList(){
+        for(Order order : orderlist.getOrderList()){
+            System.out.print("주문내역 :" + order.getMenu() + "\n총 금액 : " + order.getTotalPrice() + "\n");
+        }
+    }
+
 }

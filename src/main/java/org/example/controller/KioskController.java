@@ -34,6 +34,14 @@ public class KioskController {
         }
     }
 
+    public void option2(){
+        kioskService.getOrderList();
+    }
+
+    public void option3(){
+
+    }
+
     public void run(){
         outputView.printStartMessage();
         String orderkind = inputView.inputOrderKind(); 
@@ -46,8 +54,12 @@ public class KioskController {
                     option1();
                     break;
                 case "2":
-                    //kioskService.option2();
+                    option2();
                     break;
+                case "3":
+                    option3();
+                    break;
+                
                 
             }
         }
