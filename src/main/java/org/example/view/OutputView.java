@@ -35,12 +35,12 @@ public class OutputView {
     }
 
     public void printOrderList(Order order){
-         System.out.print("주문내역 :" + order.getMenu()+ ", 금액 : " + order.getTotalPrice());
+         System.out.print("주문내역 : " + order.getName()+ "\t\t금액 : " + order.getTotalPrice()+" (원)");
          System.out.println();
     }
 
     public void printToTalPrice(int total){
-        System.out.println("총 금액 : " +total);
+        System.out.println("총 금액 : " +total+" (원)");
     }
 
 }
