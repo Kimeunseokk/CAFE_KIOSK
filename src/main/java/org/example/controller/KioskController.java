@@ -39,7 +39,7 @@ public class KioskController {
     }
 
     public void option3(){
-
+        System.exit(0);
     }
 
     public void run(){
