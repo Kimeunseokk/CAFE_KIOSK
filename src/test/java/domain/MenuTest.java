@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.*;
 
 
 import org.example.domain.Menu;
+import org.example.domain.Order;
 import org.junit.jupiter.api.Test;
 
 class MenuTest {
