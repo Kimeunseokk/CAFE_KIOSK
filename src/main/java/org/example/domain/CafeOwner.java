@@ -4,20 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CafeOwner {
-    private final List<OrderList> owner;
+    private final List<Order> owner;
 
     public CafeOwner(){
         this.owner = new ArrayList<>();
     }
 
-    public CafeOwner(List<OrderList> owner){
+    public CafeOwner(List<Order> owner){
         this.owner = owner;
     }
 
-    public void addOwner(OrderList orderlist){
-        owner.add(orderlist);
+    public void addOwner(Order order){
+        owner.add(order);
     }
 
-    public List<OrderList> getClientMenuList(){ return owner; }
+    public boolean hasOrders(){
+       return !owner.isEmpty();
+    }
+
+    public List<Order> getClientMenuList(){ return owner; }
 
 }

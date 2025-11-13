@@ -1,5 +1,8 @@
 package org.example.view;
 
+import java.util.List;
+
+import org.example.domain.CafeOwner;
 import org.example.domain.Menu;
 import org.example.domain.Order;
 import org.example.domain.OrderList;
@@ -41,6 +44,15 @@ public class OutputView {
 
     public void printToTalPrice(int total){
         System.out.println("총 금액 : " +total+" (원)");
+    }
+
+    public void printClientList(List<Order> orders) {
+        System.out.println("\n=== 주문 내역 ===");
+        for (Order order : orders) {
+            System.out.println("- " + order.getMenu().getName() + " " 
+                + order.getQuantity() + "개 (₩" + order.getTotalPrice() + ")");
+        }
+        System.out.println("=================\n");
     }
 
 }

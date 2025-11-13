@@ -2,6 +2,7 @@ package org.example.service;
 
 import java.util.ArrayList;
 
+import org.example.domain.CafeOwner;
 import org.example.domain.Menu;
 import org.example.domain.Order;
 import org.example.domain.OrderList;
@@ -11,6 +12,7 @@ import org.example.view.OutputView;
 public class KioskService {
 
     private final OrderList orderlist =  new OrderList();
+    private final CafeOwner owner = new CafeOwner();
     private final OutputView outputView;
 
      public KioskService(OutputView outputView) {
@@ -23,7 +25,9 @@ public class KioskService {
         Order.checkQuantity(quantity);
 
         Menu menu = Menu.findByName(name);
-        orderlist.add(new Order(menu,quantity));
+        Order order = new Order(menu, quantity);
+        orderlist.add(order);
+        owner.addOwner(order);
     }
 
     public void getOrderList(){
@@ -33,6 +37,14 @@ public class KioskService {
             total += order.getTotalPrice();
         }
         outputView.printToTalPrice(total);
+    }
+
+    public void getClientList(){
+        if (!owner.hasOrders()) {
+        System.out.println("현재 등록된 주문 내역이 없습니다.");
+        return;
+    }
+        outputView.printClientList(owner.getClientMenuList());
     }
 
 }
