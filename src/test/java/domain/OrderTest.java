@@ -18,4 +18,9 @@ class OrderTest {
         Order order = new Order(Menu.LATTE,2);
         assertThat(order.getTotalPrice()).isEqualTo(9000);
     }
+
+    @Test
+    void 주문번호가_생성되는지_확인(){
+
+    }
 }
