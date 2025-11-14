@@ -40,10 +40,11 @@ public class KioskService {
     }
 
     public void getClientList(){
-        if (!owner.hasOrders()) {
-        System.out.println("현재 등록된 주문 내역이 없습니다.");
-        return;
-    }
+            if (!owner.hasOrders()) {
+            System.out.println("현재 등록된 주문 내역이 없습니다.");
+            return;
+        }
+        outputView.printClientNumber(orderlist);
         outputView.printClientList(owner.getClientMenuList());
     }
 

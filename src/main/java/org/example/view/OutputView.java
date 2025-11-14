@@ -49,11 +49,14 @@ public class OutputView {
     public void printClientList(List<Order> orders) {
         System.out.println("\n=== 주문 내역 ===");
         for (Order order : orders) {
-            System.out.print("주문번호 "+ order.getNumber() + " -> ");
             System.out.println(order.getMenu().getName() + " " 
                 + order.getQuantity() + "개 (₩" + order.getTotalPrice() + ")");
         }
         System.out.println("=================\n");
+    }
+
+    public void printClientNumber(OrderList orderlist){
+        System.out.print("주문번호 "+ orderlist.getNumber());
     }
 
 }
