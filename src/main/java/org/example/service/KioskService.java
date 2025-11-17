@@ -1,6 +1,7 @@
 package org.example.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.example.domain.CafeOwner;
 import org.example.domain.Menu;
@@ -46,11 +47,13 @@ public class KioskService {
     }
 
     public void getClientList(){
-            if (!owner.hasOrders()) {
-            System.out.println("현재 등록된 주문 내역이 없습니다.");
+        List<OrderList> allOrders = orderRepository.loadAll();
+        if (allOrders.isEmpty()) {
+            System.out.println("등록된 주문 내역이 없습니다.");
             return;
         }
-        orderRepository.loadAll();
+
+        outputView.printClientOrderList(allOrders);
 
         // outputView.printClientNumber(orderlist);
         // outputView.printClientList(owner.getClientMenuList());

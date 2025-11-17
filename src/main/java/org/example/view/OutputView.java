@@ -59,4 +59,15 @@ public class OutputView {
         System.out.print("주문번호 "+ orderlist.getNumber());
     }
 
+     public void printClientOrderList(List<OrderList> allOrders) {
+        int orderNumber = 1; // 출력용 번호
+        for (OrderList orderList : allOrders) {
+            System.out.println("주문번호 : " + orderNumber++);
+            for (Order order : orderList.getOrderList()) {
+                System.out.println(" - " + order.getName() + " : " + order.getQuantity() + "개");
+            }
+            System.out.println("-----");
+        }
+    }
+
 }
