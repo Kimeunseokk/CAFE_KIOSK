@@ -16,6 +16,10 @@ public class OrderList {
     public OrderList(List<Order> orderlist){
         this.number = sequenece++;
         this.orderlist = orderlist;
+
+        if(number>=sequenece){
+            sequenece = number+1;
+        }
     }
 
     public void add(Order order){

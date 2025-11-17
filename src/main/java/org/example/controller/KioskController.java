@@ -12,6 +12,7 @@ public class KioskController {
     private final InputView inputView;
     private final OutputView outputView;
 
+
     public KioskController(){
         this.inputView = new InputView();
         this.outputView = new OutputView();
