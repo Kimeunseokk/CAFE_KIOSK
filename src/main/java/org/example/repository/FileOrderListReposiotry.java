@@ -14,10 +14,29 @@ import org.example.domain.OrderList;
 public class FileOrderListReposiotry implements OrderRepository{
     private static final String FILE_PATH = "/Users/rpqhfls2whdkgmail.com/Documents/vscode/KiSOK/orders.txt";
 
+    // 파일에서 다음 주문번호 계산 (파일용)
+    private int getNextOrderNumber() {
+        int maxNumber = 0;
+        try (BufferedReader br = new BufferedReader(new FileReader(FILE_PATH))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                if (line.startsWith("주문번호")) {
+                    try {
+                        int num = Integer.parseInt(line.split(":")[1].trim());
+                        if (num > maxNumber) maxNumber = num;
+                    } catch (NumberFormatException ignored) {}
+                }
+            }
+        } catch (Exception ignored) {}
+        return maxNumber + 1;
+    }
+
     @Override
     public void save(OrderList orderlist){
+        int nextNumber = getNextOrderNumber();
+
         try(BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_PATH,true))) {
-            bw.write("주문번호 : "+ orderlist.getNumber());
+            bw.write("주문번호 : "+ nextNumber);
             bw.newLine();
 
             for(Order order : orderlist.getOrderList()){
