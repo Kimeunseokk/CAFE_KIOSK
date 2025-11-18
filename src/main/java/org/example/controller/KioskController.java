@@ -40,6 +40,7 @@ public class KioskController {
     }
 
     public void option3(){
+        kioskService.setMenuList();
         System.exit(0);
     }
 

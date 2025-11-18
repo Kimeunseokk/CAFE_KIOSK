@@ -31,10 +31,13 @@ public class KioskService {
 
         Menu menu = Menu.findByName(name);
         Order order = new Order(menu, quantity);
+
         orderlist.add(order);
-        owner.addOwner(order);
+        // orderlist.add(order);
+        // owner.addOwner(order);
         
-        orderRepository.save(orderlist);
+        // orderRepository.save(orderlist);
+
     }
 
     public void getOrderList(){
@@ -44,6 +47,11 @@ public class KioskService {
             total += order.getTotalPrice();
         }
         outputView.printToTalPrice(total);
+    }
+
+    public void setMenuList(){
+        orderRepository.save(orderlist);
+        orderlist.getOrderList().clear();
     }
 
     public void getClientList(){
