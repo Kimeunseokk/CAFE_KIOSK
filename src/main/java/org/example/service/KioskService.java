@@ -50,8 +50,11 @@ public class KioskService {
     }
 
     public void setMenuList(){
-        orderRepository.save(orderlist);
-        orderlist.getOrderList().clear();
+        if(!orderlist.getOrderList().isEmpty()){
+            orderRepository.save(orderlist);
+            orderlist.getOrderList().clear();
+        }
+        System.exit(0);
     }
 
     public void getClientList(){
