@@ -22,7 +22,7 @@ public class InputView {
     }
 
     public String inputMenu(){
-        System.out.print("\n1. 주문 2. 주문내역 3. 주문종료 4. 관리자모드> ");
+        System.out.print("\n1. 주문 2. 장바구니 3. 주문종료 4. 관리자모드> ");
         return scanner.nextLine();
     }
 
