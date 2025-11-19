@@ -38,13 +38,21 @@ public class OutputView {
     }
 
     public void printOrderList(Order order){
-         System.out.print("주문내역 : " + order.getName()+ "\t\t금액 : " + order.getTotalPrice()+" (원)");
-         System.out.println();
+        System.out.print("주문내역 : " + order.getName()+ "\t\t금액 : " + order.getTotalPrice()+" (원)");
+        System.out.println();
     }
 
-    public void printToTalPrice(int total){
-        System.out.println("총 금액 : " +total+" (원)");
+    public void printorderlist(List<Order> order, int total){
+        System.out.print("=== 주문 내역 ===");
+        for(Order o : order){
+            System.out.print("\n"+o.getName() + " "+ o.getQuantity()+ "개  (" + o.getTotalPrice() + "원)");
+        }
+        System.out.println("\n총 금액 : " +total+" (원)");
     }
+
+    // public void printToTalPrice(int total){
+    //     System.out.println("총 금액 : " +total+" (원)");
+    // }
 
     public void printClientList(List<Order> orders) {
         System.out.println("\n=== 주문 내역 ===");
@@ -68,6 +76,14 @@ public class OutputView {
             }
             System.out.println("-----");
         }
+    }
+
+    public void printNoClientOrders() {
+        System.out.println("등록된 주문 내역이 없습니다.");
+    }
+
+    public void printNotImplemented() {
+        System.out.println("아직 구현되지 않은 기능입니다.");
     }
 
 }

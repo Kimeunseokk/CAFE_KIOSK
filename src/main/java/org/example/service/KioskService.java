@@ -17,13 +17,16 @@ public class KioskService {
     private final OrderList orderlist =  new OrderList();
     private final CafeOwner owner = new CafeOwner();
     private final OutputView outputView;
+    private final InputView inputView;
     private final OrderRepository orderRepository;
 
-     public KioskService(OutputView outputView) {
+     public KioskService(OutputView outputView, InputView inputView) {
         this.outputView = outputView;
+        this.inputView = inputView;
         this.orderRepository = new FileOrderListReposiotry();
     }
 
+    // 메뉴 주문 처리 (임시 저장)
     public void orderMenu(String name, int quantity){
         Menu.checkContainsMenu(name);
     
@@ -33,34 +36,45 @@ public class KioskService {
         Order order = new Order(menu, quantity);
 
         orderlist.add(order);
-        // orderlist.add(order);
-        // owner.addOwner(order);
-        
-        // orderRepository.save(orderlist);
-
     }
 
-    public void getOrderList(){
+    // 장바구니 총액 계산
+    public int getTotalPrice(){
         int total = 0;
         for(Order order : orderlist.getOrderList()){
-            outputView.printOrderList(order);
-            total += order.getTotalPrice();
+            total+=order.getTotalPrice();
         }
-        outputView.printToTalPrice(total);
+
+        return total;
     }
 
+    // 현재 장바구니에 담긴 내역 출력
+    public List<Order> getCurrentOrder(){
+        return orderlist.getOrderList();
+    }
+
+    // // 장바구니 반환 및 총액 계산
+    // public void getOrderList(){
+    //     int total = 0;
+    //     for(Order order : orderlist.getOrderList()){
+    //         outputView.printOrderList(order);
+    //         total += order.getTotalPrice();
+    //     }
+    //     outputView.printToTalPrice(total);
+    // }
+
     public void setMenuList(){
-        if(!orderlist.getOrderList().isEmpty()){
-            orderRepository.save(orderlist);
-            orderlist.getOrderList().clear();
+        if(orderlist.getOrderList().isEmpty()){
+            return;
         }
-        System.exit(0);
+        orderRepository.save(orderlist);
+        orderlist.getOrderList().clear();
+        // System.exit(0); service에서 시스템 종료를 좋지 않은 개발법
     }
 
     public void getClientList(){
         List<OrderList> allOrders = orderRepository.loadAll();
         if (allOrders.isEmpty()) {
-            System.out.println("등록된 주문 내역이 없습니다.");
             return;
         }
 

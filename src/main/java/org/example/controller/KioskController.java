@@ -1,5 +1,7 @@
 package org.example.controller;
 
+import java.util.List;
+
 import org.example.domain.Order;
 import org.example.service.KioskService;
 import org.example.view.InputView;
@@ -16,7 +18,7 @@ public class KioskController {
     public KioskController(){
         this.inputView = new InputView();
         this.outputView = new OutputView();
-        this.kioskService = new KioskService(outputView);
+        this.kioskService = new KioskService(outputView, inputView);
     }
 
     public void option1(){
@@ -36,15 +38,31 @@ public class KioskController {
     }
 
     public void option2(){
-        kioskService.getOrderList();
+        List<Order> currentlist = kioskService.getCurrentOrder();
+        outputView.printorderlist(currentlist, kioskService.getTotalPrice());
     }
 
     public void option3(){
         kioskService.setMenuList();
+        System.exit(0);
     }
 
     public void option4(){
         kioskService.getClientList();
+        while(true){
+            String str = inputView.inputClientMenu(); // 관리자모드 종류 입력받기
+            switch(str){
+                case "1":
+                    break;
+
+                case "2":
+                    break;
+
+                case "3":
+                    return;
+
+            }
+        }
     }
 
     public void run(){
