@@ -3,6 +3,7 @@ package org.example.controller;
 import java.util.List;
 
 import org.example.domain.Order;
+import org.example.domain.OrderList;
 import org.example.service.KioskService;
 import org.example.view.InputView;
 import org.example.view.OutputView;
@@ -18,7 +19,7 @@ public class KioskController {
     public KioskController(){
         this.inputView = new InputView();
         this.outputView = new OutputView();
-        this.kioskService = new KioskService(outputView, inputView);
+        this.kioskService = new KioskService();
     }
 
     public void option1(){
@@ -48,7 +49,8 @@ public class KioskController {
     }
 
     public void option4(){
-        kioskService.getClientList();
+        List<OrderList> client = kioskService.getClientList();
+        outputView.printClientOrderList(client);
         while(true){
             String str = inputView.inputClientMenu(); // 관리자모드 종류 입력받기
             switch(str){

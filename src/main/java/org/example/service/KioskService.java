@@ -16,13 +16,9 @@ public class KioskService {
 
     private final OrderList orderlist =  new OrderList();
     private final CafeOwner owner = new CafeOwner();
-    private final OutputView outputView;
-    private final InputView inputView;
     private final OrderRepository orderRepository;
 
-     public KioskService(OutputView outputView, InputView inputView) {
-        this.outputView = outputView;
-        this.inputView = inputView;
+     public KioskService() {
         this.orderRepository = new FileOrderListReposiotry();
     }
 
@@ -72,14 +68,9 @@ public class KioskService {
         // System.exit(0); service에서 시스템 종료를 좋지 않은 개발법
     }
 
-    public void getClientList(){
+    public List<OrderList> getClientList(){
         List<OrderList> allOrders = orderRepository.loadAll();
-        if (allOrders.isEmpty()) {
-            return;
-        }
-
-        outputView.printClientOrderList(allOrders);
-
+        return allOrders;
         // outputView.printClientNumber(orderlist);
         // outputView.printClientList(owner.getClientMenuList());
     }
