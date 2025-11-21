@@ -27,8 +27,13 @@ public class InputView {
     }
 
     public String inputClientMenu(){
-        System.out.print("관리자 모드 목록 : 1. 삭제  2. 수정 3. 모드종료 > ");
+        System.out.print("관리자 모드 목록 : 1. 삭제  2. 수정 3. 모드 종료 > ");
         return scanner.nextLine();
+    }
+
+    public String inpurtClientDeleteMenu(){
+        System.out.print("삭제할 주문본호를 입력해주세요 > ");
+        return scanner.nextLine().trim();
     }
 
 }

@@ -22,7 +22,7 @@ public class KioskController {
         this.kioskService = new KioskService();
     }
 
-    public void option1(){
+    public void MenuOrder(){
         while(true){
             try {
                 String str = inputView.inputMenuName();
@@ -38,23 +38,29 @@ public class KioskController {
         }
     }
 
-    public void option2(){
+    public void MenuList(){
         List<Order> currentlist = kioskService.getCurrentOrder();
         outputView.printorderlist(currentlist, kioskService.getTotalPrice());
     }
 
-    public void option3(){
+    public void EndOrder(){
         kioskService.setMenuList();
         System.exit(0);
     }
 
-    public void option4(){
+    public void HandleMenu(){
+        String str = inputView.inpurtClientDeleteMenu();
+        kioskService.deleteMenuList(Integer.parseInt(str));
+    }
+
+    public void ClientMenu(){
         List<OrderList> client = kioskService.getClientList();
         outputView.printClientOrderList(client);
         while(true){
             String str = inputView.inputClientMenu(); // 관리자모드 종류 입력받기
             switch(str){
                 case "1":
+                    HandleMenu();
                     break;
 
                 case "2":
@@ -76,16 +82,16 @@ public class KioskController {
             String option = inputView.inputMenu(); 
             switch(option){
                 case "1":
-                    option1();
+                    MenuOrder();
                     break;
                 case "2":
-                    option2();
+                    MenuList();
                     break;
                 case "3":
-                    option3();
+                    EndOrder();
                     break;
                 case "4":
-                    option4();
+                    ClientMenu();
                     break;
             }
         }

@@ -88,5 +88,39 @@ public class FileOrderListReposiotry implements OrderRepository{
 
         return result;
     }
+
+    public void deleteByNum(int orderNumber) {
+
+        List<OrderList> allOrders = loadAll();
+
+        if (orderNumber < 1 || orderNumber > allOrders.size()) {
+            throw new IllegalArgumentException("❌ 존재하지 않는 주문번호입니다.");
+        }
+
+        // 인덱스 기준 삭제
+        allOrders.remove(orderNumber - 1);
+
+        // 파일 전체 재작성
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_PATH))) {
+
+            for (int i = 0; i < allOrders.size(); i++) {
+
+                bw.write("주문번호 : " + (i + 1));
+                bw.newLine();
+
+                for (Order order : allOrders.get(i).getOrderList()) {
+                    bw.write(order.getName() + "," + order.getQuantity());
+                    bw.newLine();
+                }
+
+                bw.write("//");
+                bw.newLine();
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException("삭제 후 저장 중 오류 발생", e);
+        }
+    }
+}
     
-} 
+

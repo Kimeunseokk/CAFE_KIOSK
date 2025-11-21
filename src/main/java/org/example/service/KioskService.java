@@ -1,5 +1,7 @@
 package org.example.service;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,6 +75,10 @@ public class KioskService {
         return allOrders;
         // outputView.printClientNumber(orderlist);
         // outputView.printClientList(owner.getClientMenuList());
+    }
+
+    public void deleteMenuList(int num){
+        orderRepository.deleteByNum(num);       
     }
 
 }
