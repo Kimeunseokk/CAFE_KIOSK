@@ -53,6 +53,10 @@ public class KioskController {
         kioskService.deleteMenuList(Integer.parseInt(str));
     }
 
+    public void SwitchMenu(){
+        kioskService.switchMenuList(Integer.parseInt(inputView.inputClientSwitch()),inputView.inputClientSwitchMenu(),inputView.inputClientSwitchQuantity());
+    }
+
     public void ClientMenu(){
         List<OrderList> client = kioskService.getClientList();
         outputView.printClientOrderList(client);
@@ -61,9 +65,12 @@ public class KioskController {
             switch(str){
                 case "1":
                     HandleMenu();
+                    outputView.printClientOrderList(client);
                     break;
 
                 case "2":
+                    SwitchMenu();
+                    outputView.printClientOrderList(client);
                     break;
 
                 case "3":

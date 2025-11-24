@@ -81,4 +81,15 @@ public class KioskService {
         orderRepository.deleteByNum(num);       
     }
 
+    public void switchMenuList(int num, String menuName, String quantity){
+        String newMenuName = menuName.isBlank() ? null : menuName;
+
+        Integer newQuantity = null;
+        if(!quantity.isBlank()){
+            newQuantity = Integer.parseInt(quantity);
+        }
+
+        orderRepository.switchByNum(num, newMenuName, newQuantity);
+    }
+
 }

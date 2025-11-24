@@ -36,4 +36,19 @@ public class InputView {
         return scanner.nextLine().trim();
     }
 
+    public String inputClientSwitch(){
+        System.out.print("수정할 주문 번호 > ");
+        return scanner.nextLine();
+    }
+
+    public String inputClientSwitchMenu(){
+        System.out.print("수정할 메뉴(변경 원치 않으면 Enter) > ");
+        return scanner.nextLine();
+    }
+
+    public String inputClientSwitchQuantity(){
+        System.out.print("수량 수정(변경 원치 않으면 Enter) > ");
+        return scanner.nextLine();
+    }
+
 }

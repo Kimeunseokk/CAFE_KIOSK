@@ -13,6 +13,7 @@ public interface OrderRepository {
     public void save(OrderList orderlist);
     List<OrderList> loadAll();
     public void deleteByNum(int orderid);
+    public void switchByNum(int orderId, String name, int quantity);
 }
     
 
